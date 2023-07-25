@@ -2,7 +2,7 @@ from typing import Tuple
 
 import requests
 from cachetools import cached, TTLCache
-from dist_calculator import dist_btw_coords
+from utils.functions import dist_btw_coords
 
 ttl = TTLCache(maxsize=512, ttl=86400)
 
@@ -19,7 +19,7 @@ class YandexPlaces:
     def __url_creator(self,
                       ll: Tuple,
                       text: str,
-                      result: int = 25
+                      result: int = 5
                       ):
         url = "".join(["https://search-maps.yandex.ru/v1/?",
                        f"apikey={self.api_key}",
