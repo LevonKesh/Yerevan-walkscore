@@ -16,3 +16,10 @@ def dist_btw_coords(lon1, lat1, lon2, lat2):
         lat2)
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return earth_rad * c * 1000
+
+
+def distance_to_score(num: int, scale: int = 100_000):
+    if num <= 100:
+        return 100
+    else:
+        return 100 * math.e ** (- ((num - 100) ** 2 / scale))

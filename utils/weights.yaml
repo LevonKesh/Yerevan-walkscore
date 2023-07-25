@@ -1,0 +1,27 @@
+Grocery:
+  - 1
+  - 0.8
+  - 0.3
+  - 0.1
+  - 0.05
+Metro station:
+  - 1
+Public transport stop:
+  - 1
+  - 1
+  - 0.5
+  - 0.5
+School:
+  - 1
+  - 0.5
+Kindergarten:
+  - 1
+Restaurant:
+  - 1
+  - 0.7
+  - 0.3
+Park:
+  - 1
+Pharmacy:
+  - 1
+  - 0.3
