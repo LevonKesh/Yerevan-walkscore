@@ -40,6 +40,15 @@ class ScoreCalculator:
                        place_types: List):
         self.requested_vals = {place: self.api_connector.get_request(self.ll,
                                                                      text=place)["features"] for place in place_types}
+
+        if "Grocery" in place_types:
+            supermarket_q = self.api_connector.get_request(self.ll,
+                                                           text="Supermarket")["features"]
+            groceries_q = self.requested_vals["Grocery"]
+            groceries_q.extend(supermarket_q)
+            self.requested_vals["Grocery"] = groceries_q
+            self.requested_vals["Grocery"] = sorted(self.requested_vals["Grocery"],
+                   key=lambda x: x["distance"])
         return self.requested_vals
 
     def request_default(self):
@@ -63,6 +72,3 @@ class ScoreCalculator:
             scores[place_type] = (sum(vals_scales) / len(vals_scales)) * (self.total_weights[place_type] / total_weight)
 
         return sum(scores.values())
-
-
-
